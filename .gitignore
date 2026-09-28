@@ -1,0 +1,8 @@
+TaskManager.user.props
+bin/
+obj/
+.idea/
+*.DotSettings.user
+TCGProfiler/Refs/*
+!TCGProfiler/Refs/README
+releases/
