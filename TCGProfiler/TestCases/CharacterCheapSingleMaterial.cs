@@ -7,9 +7,9 @@ namespace TCGProfiler.TestCases;
 public sealed class CharacterCheapSingleMaterialTestCase : TestCase
 {
     private Material? _cheapMaterial;
+    private int _originalMaterialSlots;
 
     private int _renderersChanged;
-    private int _originalMaterialSlots;
 
     public CharacterCheapSingleMaterialTestCase(
         bool enabled = true)
@@ -50,17 +50,12 @@ public sealed class CharacterCheapSingleMaterialTestCase : TestCase
             if (renderer == null ||
                 !renderer.enabled ||
                 !renderer.gameObject.activeInHierarchy)
-            {
                 continue;
-            }
 
             var existing =
                 renderer.sharedMaterials;
 
-            if (existing.Length == 0)
-            {
-                continue;
-            }
+            if (existing.Length == 0) continue;
 
             _originalMaterialSlots +=
                 existing.Length;

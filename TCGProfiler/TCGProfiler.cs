@@ -141,43 +141,43 @@ public sealed class TcgProfiler : MonoBehaviour
 
         _tests.Add(
             new CheapCharacterApparelShaderTestCase(
-                enabled: true
+                true
             )
         );
 
         _tests.Add(
             new CheapCharacterSkinShaderTestCase(
-                enabled: true
+                true
             )
         );
 
         _tests.Add(
             new CheapCharacterToonyColorsShaderTestCase(
-                enabled: true
+                true
             )
         );
 
         _tests.Add(
             new CheapCharacterTransparentShaderTestCase(
-                enabled: true
+                true
             )
         );
 
         _tests.Add(
             new CheapCharacterHairShaderTestCase(
-                enabled: true
+                true
             )
         );
 
         _tests.Add(
             new CharacterCheapMaterialTestCase(
-                enabled: true
+                true
             )
         );
 
         _tests.Add(
             new DisableCharacterRenderingTestCase(
-                enabled: true
+                true
             )
         );
     }

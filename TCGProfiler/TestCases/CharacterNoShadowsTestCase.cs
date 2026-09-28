@@ -29,9 +29,7 @@ public sealed class CharacterNoShadowsTestCase : TestCase
             if (renderer == null ||
                 !renderer.enabled ||
                 !renderer.gameObject.activeInHierarchy)
-            {
                 continue;
-            }
 
             renderer.shadowCastingMode =
                 ShadowCastingMode.Off;

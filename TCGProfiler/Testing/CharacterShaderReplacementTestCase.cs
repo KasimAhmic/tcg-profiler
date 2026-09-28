@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace TCGProfiler.Testing;
 
 public abstract class CharacterShaderReplacementTestCase : TestCase
 {
     private Material? _cheapMaterial;
+    private int _matchedMaterialSlots;
 
     private int _matchedRenderers;
     private int _visibleMatchedRenderers;
-    private int _matchedMaterialSlots;
 
     protected CharacterShaderReplacementTestCase(
         string name,
@@ -62,17 +63,12 @@ public abstract class CharacterShaderReplacementTestCase : TestCase
             if (renderer == null ||
                 !renderer.enabled ||
                 !renderer.gameObject.activeInHierarchy)
-            {
                 continue;
-            }
 
             var materials =
                 renderer.sharedMaterials;
 
-            if (materials.Length == 0)
-            {
-                continue;
-            }
+            if (materials.Length == 0) continue;
 
             Material[]? replacements = null;
             var replacedSlots = 0;
@@ -86,15 +82,11 @@ public abstract class CharacterShaderReplacementTestCase : TestCase
 
                 if (material == null ||
                     material.shader == null)
-                {
                     continue;
-                }
 
                 if (!ShouldReplaceShader(
                         material.shader.name))
-                {
                     continue;
-                }
 
                 /*
                  * Don't allocate a replacement array unless
@@ -109,10 +101,7 @@ public abstract class CharacterShaderReplacementTestCase : TestCase
                 replacedSlots++;
             }
 
-            if (replacements == null)
-            {
-                continue;
-            }
+            if (replacements == null) continue;
 
             renderer.sharedMaterials =
                 replacements;
@@ -122,10 +111,7 @@ public abstract class CharacterShaderReplacementTestCase : TestCase
             _matchedMaterialSlots +=
                 replacedSlots;
 
-            if (renderer.isVisible)
-            {
-                _visibleMatchedRenderers++;
-            }
+            if (renderer.isVisible) _visibleMatchedRenderers++;
         }
 
         Debug.Log(
@@ -157,7 +143,7 @@ public abstract class CharacterShaderReplacementTestCase : TestCase
     {
         if (_cheapMaterial != null)
         {
-            UnityEngine.Object.Destroy(
+            Object.Destroy(
                 _cheapMaterial
             );
 
